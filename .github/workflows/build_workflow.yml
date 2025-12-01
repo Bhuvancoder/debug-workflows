@@ -1,0 +1,11 @@
+name: Build_Workflow_demo
+
+on:
+    push:
+jobs:
+    build_workflow:
+        runs-on: ubuntu_latest
+        steps:
+        - name: Build Success
+          run: echo "Job Build Success"
+

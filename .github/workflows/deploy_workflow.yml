@@ -1,0 +1,20 @@
+name: Deploy_Workflow
+
+on:
+    workflow_run:
+      workflows: [build_workflow]
+      types: [completed]
+jobs:
+    on_success:
+        runs-on: ubuntu-latest
+        if: ${{github.event.workflow_run.conclusion == 'success'}}
+        steps:
+        - name: Deployment Steps
+          run: echo 'Initiate deployment steps'
+
+    on_failure:
+        runs-on: ubuntu-latest
+        if: ${{github.event.workflow_run.conclusion == 'failure'}}
+        steps:
+        - name: Deployment Steps
+          run: echo "The workflow failed"
